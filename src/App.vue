@@ -1,16 +1,22 @@
 <template>
   <v-app>
-    <main :class="{'orange-green': themeSwitched}">
+    <main :class="{ 'orange-green': themeSwitched }">
       <div class="app-container">
         <header class="app-header dark-brown">
           <h1>My Pet Store</h1>
-          <v-btn @click="themeSwitched= !themeSwitched">Switch theme</v-btn>
+          <v-btn @click="themeSwitched = !themeSwitched">Switch theme</v-btn>
         </header>
         <v-toolbar>
+          <v-toolbar-items>
             <v-btn to="/" text>Home</v-btn>
-          <v-toolbar-items >
             <v-btn to="/pets" text>Pets</v-btn>
           </v-toolbar-items>
+          <v-spacer></v-spacer>
+          <router-link to="/favorites">
+            <v-icon large>
+              loyalty
+            </v-icon>
+          </router-link>
         </v-toolbar>
         <router-view></router-view>
         <footer class="app-footer dark-brown">
@@ -28,7 +34,7 @@ export default {
   components: {},
 
   data: () => ({
-    themeSwitched: true
+    themeSwitched: true,
   }),
 };
 </script>
