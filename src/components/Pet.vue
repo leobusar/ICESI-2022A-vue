@@ -5,6 +5,11 @@
       <div>
         <h3>{{ dog.name }}</h3>
         <p>{{ dog.breed }}</p>
+        <v-btn
+          @click="$emit('addFavorites', dog)"
+           
+          >Add To Favorites</v-btn
+        >
       </div>
     </v-card-title>
   </v-card>
@@ -12,10 +17,15 @@
 
 <script>
 export default {
-    props: {
-        dog: {
-            type: Object
-        }
-    }
-}
+  props: {
+    dog: {
+      type: Object,
+    },
+  },
+  computed: {
+    favorites() {
+      return this.$store.state.favorites
+    },
+  },
+};
 </script>

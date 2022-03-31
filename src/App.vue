@@ -13,11 +13,20 @@
           </v-toolbar-items>
           <v-spacer></v-spacer>
           <router-link to="/favorites">
-            <v-icon large>
-              loyalty
-            </v-icon>
+            <v-badge
+              color="grey lighten-1"
+              overlap
+              right
+              v-model="favorites.length"
+            >
+              <template #badge>
+                {{ favorites.length }}
+              </template>
+              <v-icon large> loyalty </v-icon>
+            </v-badge>
           </router-link>
         </v-toolbar>
+        <error></error>
         <router-view></router-view>
         <footer class="app-footer dark-brown">
           <p>123 Main Street | Smithfield, RI 90987 | 345-456-5678</p>
@@ -28,14 +37,23 @@
 </template>
 
 <script>
+import Error from "./components/Error"
+
 export default {
   name: "App",
 
-  components: {},
+  components: {
+    Error
+  },
 
   data: () => ({
     themeSwitched: true,
   }),
+  computed: {
+    favorites() {
+      return this.$store.state.favorites;
+    },
+  },
 };
 </script>
 
